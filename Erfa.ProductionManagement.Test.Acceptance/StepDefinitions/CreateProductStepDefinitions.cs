@@ -1,8 +1,9 @@
 using Erfa.ProductionManagement.Service.Test.Acceptance.Models.Catalog;
 using Erfa.ProductionManagement.Service.Test.Acceptance.Models.Catalog.Requests;
+using System;
+using System.Net;
 using System.Net.Http.Json;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace Erfa.ProductionManagement.Test.Acceptance.StepDefinitions
 {
@@ -18,43 +19,49 @@ namespace Erfa.ProductionManagement.Test.Acceptance.StepDefinitions
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"valid CreateProductRequest:")]
-        public async void GivenValidCreateProductRequest(Table table)
+        [Given(@"valid CreateProductRequest with ProductNumber ""([^""]*)"", Description ""([^""]*)"", ProductionTimeSec (.*), MaterialProductName ""([^""]*)""")]
+        public void GivenValidCreateProductRequestWithProductNumberDescriptionProductionTimeSecMaterialProductName(
+                            string productNumber,
+                            string description,
+                            double productionTimeSec,
+                            string materialProductName)
         {
-            var createdProductRequests = table.CreateSet<CreateProductRequest>();
-            var createdProducts = new List<ProductModelView>();
-            foreach (var createProductRequest in createdProductRequests)
+            CreateProductRequest request = new CreateProductRequest()
             {
-                var response = await _httpClient.PostAsJsonAsync("products", createProductRequest);
-                var responseProduct = await response.Content.ReadFromJsonAsync<ProductModelView>();
-                createdProducts.Add(responseProduct);
-            }
-            _scenarioContext.Add("CreatedProducts", createdProducts);
-            var x = 3;
+                ProductNumber = productNumber,
+                Description = description,
+                ProductionTimeSec = productionTimeSec,
+                MaterialProductName = materialProductName
+            };
+
+
+            _scenarioContext.Add("ValidRequest", request);
         }
 
-        [When(@"I create a product")]
-        public void WhenICreateAProduct()
+        [When(@"creating a new product")]
+        public async Task WhenCreatingANewProduct()
         {
-            ScenarioContext.StepIsPending();
+            var response = await _httpClient.PostAsJsonAsync("/api/v1/Catalog/Create", _scenarioContext.Get<CreateProductRequest>("ValidRequest"));
+            var isSuccess = response.IsSuccessStatusCode;
+            var responseContentString = await response.Content.ReadAsStringAsync();
+            _scenarioContext.Add("ValidRequestResponseIsSuccess", isSuccess);
+            _scenarioContext.Add("ValidRequestResponseContentString", responseContentString);
+            
         }
 
-        [Then(@"the product is created")]
-        public void ThenTheProductIsCreated()
+        [Then(@"the response status is Success")]
+        public void ThenTheResponseStatusIsSuccess()
         {
-            ScenarioContext.StepIsPending();
+            var isSuccess = _scenarioContext.Get<Boolean>("ValidRequestResponseIsSuccess");
+
+            Assert.True(isSuccess);
         }
 
-        [Given(@"invalid CreateProductRequest")]
-        public void GivenInvalidCreateProductRequest()
+        [Then(@"the product is created with ProductNumber ""([^""]*)""")]
+        public void ThenTheProductIsCreatedWithProductNumber(string productNumber)
         {
-            ScenarioContext.StepIsPending();
-        }
-
-        [Then(@"the product is not created")]
-        public void ThenTheProductIsNotCreated()
-        {
-            ScenarioContext.StepIsPending();
+            var responseProduct = _scenarioContext.Get<string>("ValidRequestResponseContentString");
+            Assert.True(responseProduct.Equals(productNumber));
         }
     }
 }

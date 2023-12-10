@@ -5,7 +5,7 @@ services:
 
   data_prod:
     image: postgres:13.0
-    container_name: erfa_production_data
+    container_name: erfa_test_production_data
     ports:
       - 4433:5432
     environment:
@@ -19,14 +19,19 @@ services:
   prod_service:
     depends_on:
       - data_prod
-    build: 
-        context: /
-        dockerfile: Dockerfile
-    container_name: erfa_production_service
+    links:
+      - data_prod
+    build:
+      context: /
+      dockerfile: Dockerfile
+    container_name: erfa_test_production
     ports:
       - 4060:80
     environment:
-      - ConnectionStrings__PostgreSQLConnString=Host=data_prod;Port=4433;Database=ProductionManagement;Username=sa;Password=Qwer!234
+      - ConnectionStrings__PostgreSQLConnString=Host=data_prod;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
+      - Cors__PolicyName=test_policy
+      - Cors__AllowedOrigins__0__=https://dosmarter.tech
+      - Cors__AllowedOrigins__1__=https://127.0.0.1:3000
     networks:
       - productionmanagement
 

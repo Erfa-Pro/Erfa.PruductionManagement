@@ -50,6 +50,10 @@ namespace Erfa.PruductionManagement.Api.Middlewares
                     httpStatusCode = HttpStatusCode.BadRequest;
                     result = JsonSerializer.Serialize(new ErrorDto(badRequestException.Message, 400));
                     break;
+                case ClaimException claimException:
+                    httpStatusCode = HttpStatusCode.BadRequest;
+                    result = JsonSerializer.Serialize(new ErrorDto(claimException.Message, 400));
+                    break;
                 case ResourceNotFoundException resourceNotFoundException:
                     httpStatusCode = HttpStatusCode.NotFound;
                     result = JsonSerializer.Serialize(new ErrorDto(resourceNotFoundException.Message, 404));

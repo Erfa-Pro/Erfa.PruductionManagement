@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Erfa.PruductionManagement.Application.Features.Catalog.Commands.CreateProduct;
+using Erfa.PruductionManagement.Application.RequestModels;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Erfa.PruductionManagement.Api.Controllers.V1
 {
@@ -6,7 +9,14 @@ namespace Erfa.PruductionManagement.Api.Controllers.V1
     [ApiController]
     public class CatalogController : Controller
     {
-        [HttpGet("GetAllIProducts", Name = "GetAllPRoducts")]
+        private readonly IMediator _mediator;
+
+        public CatalogController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpGet("All", Name = "All")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -15,5 +25,18 @@ namespace Erfa.PruductionManagement.Api.Controllers.V1
             var result = "Hello";
             return Ok(result);
         }
+
+        [HttpPost("Create", Name = "CreateNewProduct")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<string>> Create([FromBody] CreateProductRequestModel request, [FromHeader] ApiHeaders apiHeaders)
+        {
+            string userName = apiHeaders.UserName;
+
+            var result = await _mediator.Send(new CreateProductCommand(request, userName));
+            return StatusCode(201, result);
+        }
     }
 }
+

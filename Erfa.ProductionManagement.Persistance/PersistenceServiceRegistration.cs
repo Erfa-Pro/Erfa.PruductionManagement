@@ -10,6 +10,8 @@ namespace Erfa.ProductionManagement.Persistance
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
+            Console.WriteLine(configuration.GetConnectionString("PostgreSQLConnString"));
+
             services.AddDbContext<ErfaDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQLConnString")));
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));

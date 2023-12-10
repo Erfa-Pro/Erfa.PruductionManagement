@@ -94,7 +94,7 @@ namespace Erfa.PruductionManagement.Api
             app.UseRouting();
             app.UseCors(policyName);
             app.MapControllers();
-
+            app.MapGet("/", () => "Erfa-Pro Production Management Service");
             return app;
         }
     }

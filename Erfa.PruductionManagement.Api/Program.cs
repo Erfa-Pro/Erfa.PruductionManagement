@@ -13,7 +13,13 @@ using var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetService<ErfaDbContext>();
 if (context != null)
 {
-    context.Database.Migrate();
+    try
+    {
+        context.Database.Migrate();
+    } catch (Exception e )
+    {
+        Console.WriteLine(e.ToString());
+    }
 }
 
 app.Run();
