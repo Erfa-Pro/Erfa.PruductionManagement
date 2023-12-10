@@ -12,12 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Update docker-compose
-      run: |
-          docker-compose version
-          pip install docker-compose
-          docker-compose version
-          
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
