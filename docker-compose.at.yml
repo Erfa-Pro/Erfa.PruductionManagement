@@ -31,7 +31,7 @@ services:
     restart: on-failure
     build:
       context: /
-      dockerfile: Dockerfile
+#      dockerfile: ./Dockerfile
     container_name: erfa_test_production
     ports:
       - 4060:80
