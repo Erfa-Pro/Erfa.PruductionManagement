@@ -1,5 +1,4 @@
 ﻿version: '3.9'
-name: erfaproductionmanagement
 
 services:
 
@@ -14,13 +13,19 @@ services:
       POSTGRES_USER: sa
       POSTGRES_PASSWORD: Qwer!234
       POSTGRES_DB: ProductionManagement
+    healthcheck:
+          test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+          interval: 30s
+          timeout: 60s
+          retries: 5
+          start_period: 80s
     networks:
       - erfa
 
   prod_service:
     depends_on:
       erfa_data_prod:
-         condition: service_started
+         condition: service_healthy
     links: 
       - erfa_data_prod
     restart: on-failure
@@ -40,4 +45,6 @@ services:
 
 networks:
   erfa:
+    name: erfa
+
    
