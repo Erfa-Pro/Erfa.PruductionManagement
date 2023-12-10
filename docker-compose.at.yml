@@ -1,5 +1,5 @@
 ﻿version: '3.9'
-
+name: testProductionManagement
 services:
 
   data_prod:
@@ -12,6 +12,7 @@ services:
       POSTGRES_PASSWORD: Qwer!234
       POSTGRES_DB: ProductionManagement
     restart: always
+    hostname: postgresql
     networks:
       - productionmanagement
 
@@ -27,7 +28,7 @@ services:
     ports:
       - 4060:80
     environment:
-      - ConnectionStrings__PostgreSQLConnString=Host=data_prod;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
+      - ConnectionStrings__PostgreSQLConnString=Host=postgresql;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
       - Cors__PolicyName=test_policy
       - Cors__AllowedOrigins__0__=https://dosmarter.tech
       - Cors__AllowedOrigins__1__=https://127.0.0.1:3000
