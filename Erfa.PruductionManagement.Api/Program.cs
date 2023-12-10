@@ -15,7 +15,13 @@ if (context != null)
 {
     try
     {
+        Console.WriteLine("\n\nAAA");
+
+        Thread.Sleep(3000);
+
         context.Database.Migrate();
+        Console.WriteLine("\n\nBBB");
+
     } catch (Exception e )
     {
         Console.WriteLine(e.ToString());

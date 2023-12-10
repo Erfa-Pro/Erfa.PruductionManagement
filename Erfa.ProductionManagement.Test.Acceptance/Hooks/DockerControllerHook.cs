@@ -29,9 +29,9 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
             _compositeService = new Builder()
                 .UseContainer()
                 .UseCompose()
+                .RemoveAllImages()
                 .FromFile(dockerComposePath)
                 .RemoveOrphans()
-                .RemoveAllImages()
                 .ForceRecreate()
                 .WaitForHttp("webapi", $"{confirmationUrl}/",
                     continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
@@ -44,7 +44,7 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
         {
 
             _compositeService.Stop();
-            
+
             _compositeService.Remove(true);
             _compositeService.Dispose();
 

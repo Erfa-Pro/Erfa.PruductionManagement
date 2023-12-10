@@ -1,26 +1,29 @@
 ﻿version: '3.9'
-name: testProductionManagement
+name: erfaproductionmanagement
+
 services:
 
-  data_prod:
-    image: postgres:13.0
+  erfa_data_prod:
+    image: postgres:14.1-alpine
+    restart: always
+    hostname: postgres
     container_name: erfa_test_production_data
     ports:
-      - 4433:5432
+      - 5432:5432
     environment:
       POSTGRES_USER: sa
       POSTGRES_PASSWORD: Qwer!234
       POSTGRES_DB: ProductionManagement
-    restart: always
-    hostname: postgresql
     networks:
-      - productionmanagement
+      - erfa
 
   prod_service:
     depends_on:
-      - data_prod
-    links:
-      - data_prod
+      erfa_data_prod:
+         condition: service_started
+    links: 
+      - erfa_data_prod
+    restart: on-failure
     build:
       context: /
       dockerfile: Dockerfile
@@ -28,12 +31,13 @@ services:
     ports:
       - 4060:80
     environment:
-      - ConnectionStrings__PostgreSQLConnString=Host=postgresql;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
+      - ConnectionStrings__PostgreSQLConnString=Host=erfa_data_prod;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
       - Cors__PolicyName=test_policy
       - Cors__AllowedOrigins__0__=https://dosmarter.tech
       - Cors__AllowedOrigins__1__=https://127.0.0.1:3000
     networks:
-      - productionmanagement
+      - erfa
 
 networks:
-  productionmanagement:
+  erfa:
+   

@@ -41,6 +41,9 @@ namespace Erfa.ProductionManagement.Test.Acceptance.StepDefinitions
         [When(@"creating a new product")]
         public async Task WhenCreatingANewProduct()
         {
+
+            Thread.Sleep(5000);
+
             var response = await _httpClient.PostAsJsonAsync("/api/v1/Catalog/Create", _scenarioContext.Get<CreateProductRequest>("ValidRequest"));
             var isSuccess = response.IsSuccessStatusCode;
             var responseContentString = await response.Content.ReadAsStringAsync();
