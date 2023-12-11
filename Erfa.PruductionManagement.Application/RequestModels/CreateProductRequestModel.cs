@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Application.RequestModels
+﻿namespace Erfa.ProductionManagement.Application.RequestModels
 {
     public class CreateProductRequestModel
     {

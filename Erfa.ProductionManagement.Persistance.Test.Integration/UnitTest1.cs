@@ -1,4 +1,4 @@
-namespace Erfa.ProductionManagement.Persistance.Test.Integration
+namespace Erfa.ProductionManagement.Persistence.Test.Integration
 {
     public class Tests
     {

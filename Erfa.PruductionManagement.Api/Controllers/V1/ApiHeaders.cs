@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Erfa.PruductionManagement.Api.Controllers.V1
+namespace Erfa.ProductionManagement.Api.Controllers.V1
 {
     public class ApiHeaders
     {

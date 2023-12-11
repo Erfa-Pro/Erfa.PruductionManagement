@@ -1,8 +1,8 @@
-﻿namespace Erfa.PruductionManagement.Application.Exceptions
+﻿namespace Erfa.ProductionManagement.Application.Exceptions
 {
-    public class PersistanceFailedException : Exception
+    public class PersistenceFailedException : Exception
     {
-        public PersistanceFailedException(string name, object key)
+        public PersistenceFailedException(string name, object key)
             : base($"{name} ({key}) is not saved")
         {
         }

@@ -1,8 +1,8 @@
-﻿using Erfa.PruductionManagement.Domain.Entities;
+﻿using Erfa.ProductionManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Erfa.ProductionManagement.Persistance.Configurations
+namespace Erfa.ProductionManagement.Persistence.Configurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

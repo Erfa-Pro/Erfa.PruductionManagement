@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Application.Models.Catalog
+﻿namespace Erfa.ProductionManagement.Application.Models.Catalog
 {
     public class ProductViewModel
     {

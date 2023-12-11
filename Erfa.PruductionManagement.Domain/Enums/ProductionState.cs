@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Domain.Enums
+﻿namespace Erfa.ProductionManagement.Domain.Enums
 {
     public enum ProductionState
     {

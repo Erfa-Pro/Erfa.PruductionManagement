@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Application.Exceptions
+﻿namespace Erfa.ProductionManagement.Application.Exceptions
 {
     public class EntityUpdateException : Exception
     {

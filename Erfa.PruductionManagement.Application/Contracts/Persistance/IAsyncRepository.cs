@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Application.Contracts.Persistance
+﻿namespace Erfa.ProductionManagement.Application.Contracts.Persistence
 {
     public interface IAsyncRepository<T> where T : class
     {

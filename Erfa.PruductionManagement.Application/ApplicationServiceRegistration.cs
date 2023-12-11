@@ -1,9 +1,9 @@
-﻿using Erfa.PruductionManagement.Application.Services;
+﻿using Erfa.ProductionManagement.Application.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Erfa.PruductionManagement.Application
+namespace Erfa.ProductionManagement.Application
 {
     public static class ApplicationServiceRegistration
     {
@@ -11,7 +11,7 @@ namespace Erfa.PruductionManagement.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddScoped<ProductionService, ProductionService>();
+            services.AddScoped<IProductionService, ProductionService>();
 
             return services;
         }

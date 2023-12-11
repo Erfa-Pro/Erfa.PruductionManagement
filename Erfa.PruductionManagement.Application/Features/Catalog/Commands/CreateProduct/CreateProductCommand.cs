@@ -1,7 +1,7 @@
-﻿using Erfa.PruductionManagement.Application.RequestModels;
+﻿using Erfa.ProductionManagement.Application.RequestModels;
 using MediatR;
 
-namespace Erfa.PruductionManagement.Application.Features.Catalog.Commands.CreateProduct
+namespace Erfa.ProductionManagement.Application.Features.Catalog.Commands.CreateProduct
 {
     public class CreateProductCommand : CreateProductRequestModel, IRequest<string>
     {

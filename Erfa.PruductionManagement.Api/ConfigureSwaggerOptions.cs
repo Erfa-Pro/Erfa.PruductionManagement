@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Erfa.PruductionManagement.Api
+namespace Erfa.ProductionManagement.Api
 {
     public class ConfigureSwaggerOptions
      : IConfigureNamedOptions<SwaggerGenOptions>

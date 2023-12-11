@@ -1,5 +1,5 @@
-using Erfa.ProductionManagement.Persistance;
-using Erfa.PruductionManagement.Api;
+using Erfa.ProductionManagement.Persistence;
+using Erfa.ProductionManagement.Api;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,9 +1,9 @@
-﻿using Erfa.PruductionManagement.Application.Features.Catalog.Commands.CreateProduct;
-using Erfa.PruductionManagement.Application.RequestModels;
+﻿using Erfa.ProductionManagement.Application.Features.Catalog.Commands.CreateProduct;
+using Erfa.ProductionManagement.Application.RequestModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Erfa.PruductionManagement.Api.Controllers.V1
+namespace Erfa.ProductionManagement.Api.Controllers.V1
 {
     [Route("api/v1/[controller]")]
     [ApiController]

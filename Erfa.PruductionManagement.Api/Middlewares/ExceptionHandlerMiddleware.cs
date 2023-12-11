@@ -1,8 +1,8 @@
-﻿using Erfa.PruductionManagement.Application.Exceptions;
+﻿using Erfa.ProductionManagement.Application.Exceptions;
 using System.Net;
 using System.Text.Json;
 
-namespace Erfa.PruductionManagement.Api.Middlewares
+namespace Erfa.ProductionManagement.Api.Middlewares
 {
     public class ExceptionHandlerMiddleware
     {
@@ -58,9 +58,9 @@ namespace Erfa.PruductionManagement.Api.Middlewares
                     httpStatusCode = HttpStatusCode.NotFound;
                     result = JsonSerializer.Serialize(new ErrorDto(resourceNotFoundException.Message, 404));
                     break;
-                case PersistanceFailedException persistanceFailedException:
+                case PersistenceFailedException PersistenceFailedException:
                     httpStatusCode = HttpStatusCode.InternalServerError;
-                    result = JsonSerializer.Serialize(new ErrorDto(persistanceFailedException.Message, 500));
+                    result = JsonSerializer.Serialize(new ErrorDto(PersistenceFailedException.Message, 500));
                     break;
                 default:
                     httpStatusCode = HttpStatusCode.InternalServerError;

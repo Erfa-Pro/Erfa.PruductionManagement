@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Domain.Common
+﻿namespace Erfa.ProductionManagement.Domain.Common
 {
     public class AuditableEntity
     {

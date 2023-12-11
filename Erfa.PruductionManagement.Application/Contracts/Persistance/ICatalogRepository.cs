@@ -1,6 +1,6 @@
-﻿using Erfa.PruductionManagement.Domain.Entities;
+﻿using Erfa.ProductionManagement.Domain.Entities;
 
-namespace Erfa.PruductionManagement.Application.Contracts.Persistance
+namespace Erfa.ProductionManagement.Application.Contracts.Persistence
 {
     public interface ICatalogRepository : IAsyncRepository<Product>
     {

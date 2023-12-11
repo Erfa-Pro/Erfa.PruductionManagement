@@ -1,8 +1,8 @@
-﻿using Erfa.PruductionManagement.Domain.Common;
-using Erfa.PruductionManagement.Domain.Entities;
+﻿using Erfa.ProductionManagement.Domain.Common;
+using Erfa.ProductionManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Erfa.ProductionManagement.Persistance
+namespace Erfa.ProductionManagement.Persistence
 {
     public class ErfaDbContext : DbContext
     {

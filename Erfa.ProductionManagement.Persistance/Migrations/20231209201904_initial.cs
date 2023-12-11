@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Erfa.ProductionManagement.Persistance.Migrations
+namespace Erfa.ProductionManagement.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class initial : Migration

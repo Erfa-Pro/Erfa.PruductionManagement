@@ -1,13 +1,13 @@
-﻿using Erfa.PruductionManagement.Application;
-using Erfa.ProductionManagement.Persistance;
-using Erfa.PruductionManagement.Api.Middlewares;
+﻿using Erfa.ProductionManagement.Application;
+using Erfa.ProductionManagement.Persistence;
+using Erfa.ProductionManagement.Api.Middlewares;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Erfa.PruductionManagement.Api.Controllers.V1;
+using Erfa.ProductionManagement.Api.Controllers.V1;
 
-namespace Erfa.PruductionManagement.Api
+namespace Erfa.ProductionManagement.Api
 {
     public static class StartupExtensions
     {

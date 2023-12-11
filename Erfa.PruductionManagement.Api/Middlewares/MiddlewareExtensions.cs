@@ -1,4 +1,4 @@
-﻿namespace Erfa.PruductionManagement.Api.Middlewares
+﻿namespace Erfa.ProductionManagement.Api.Middlewares
 {
     public static class MiddlewareExtensions
     {

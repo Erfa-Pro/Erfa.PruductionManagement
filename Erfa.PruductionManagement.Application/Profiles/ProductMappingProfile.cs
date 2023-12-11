@@ -1,15 +1,18 @@
 ﻿using AutoMapper;
-using Erfa.PruductionManagement.Application.RequestModels;
-using Erfa.PruductionManagement.Domain.Entities;
+using Erfa.ProductionManagement.Application.Features.Catalog.Commands.CreateProduct;
+using Erfa.ProductionManagement.Domain.Entities;
 
-namespace Erfa.PruductionManagement.Application.Profiles
+namespace Erfa.ProductionManagement.Application.Profiles
 {
     public class ProductMappingProfile : Profile
     {
         public ProductMappingProfile()
         {
-            CreateMap<CreateProductRequestModel, Product>();
-           
+            CreateMap<CreateProductCommand, Product>()
+                .ForMember(product => product.CreatedBy, model => model.MapFrom(m => m.UserName))
+                .ForMember(product => product.LastModifiedBy, model => model.MapFrom(m => m.UserName))
+                .ForMember(product => product.CreatedDate, model => model.MapFrom(m => DateTime.UtcNow))
+                .ForMember(product => product.LastModifiedDate, model => model.MapFrom(m => DateTime.UtcNow));
         }
     }
 }
