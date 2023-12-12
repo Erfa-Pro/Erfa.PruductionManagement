@@ -18,7 +18,7 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
         }
 
         [BeforeTestRun]
-        public void DockerComposeUp()
+        public static void DockerComposeUp()
         {
             var config = LoadConfiguration();
 
@@ -40,7 +40,7 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
         }
 
         [AfterTestRun]
-        public void DockerComposeDown()
+        public static void DockerComposeDown()
         {
 
             _compositeService.Stop();
@@ -63,13 +63,13 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
             _objectContainer.RegisterInstanceAs<HttpClient>(httpClient);
         }
 
-        private IConfiguration LoadConfiguration()
+        private static IConfiguration LoadConfiguration()
         {
             return new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
         }
-        private string GetDockerComposeLocation(string dockerComposeFileName)
+        private static string GetDockerComposeLocation(string dockerComposeFileName)
         {
             var directory = Directory.GetCurrentDirectory();
             while (!Directory.EnumerateFiles(directory, "*.yml").Any(s => s.EndsWith(dockerComposeFileName)))
