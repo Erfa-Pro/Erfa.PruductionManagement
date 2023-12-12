@@ -8,19 +8,19 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Erfa.PruductionManagement.Api/Erfa.PruductionManagement.Api.csproj", "Erfa.PruductionManagement.Api/"]
+COPY ["Erfa.ProductionManagement.Api/Erfa.ProductionManagement.Api.csproj", "Erfa.ProductionManagement.Api/"]
 COPY ["Erfa.ProductionManagement.Persistance/Erfa.ProductionManagement.Persistance.csproj", "Erfa.ProductionManagement.Persistance/"]
-COPY ["Erfa.PruductionManagement.Application/Erfa.PruductionManagement.Application.csproj", "Erfa.PruductionManagement.Application/"]
-COPY ["Erfa.PruductionManagement.Domain/Erfa.PruductionManagement.Domain.csproj", "Erfa.PruductionManagement.Domain/"]
-RUN dotnet restore "Erfa.PruductionManagement.Api/Erfa.PruductionManagement.Api.csproj"
+COPY ["Erfa.ProductionManagement.Application/Erfa.ProductionManagement.Application.csproj", "Erfa.ProductionManagement.Application/"]
+COPY ["Erfa.ProductionManagement.Domain/Erfa.ProductionManagement.Domain.csproj", "Erfa.ProductionManagement.Domain/"]
+RUN dotnet restore "Erfa.ProductionManagement.Api/Erfa.ProductionManagement.Api.csproj"
 COPY . .
-WORKDIR "/src/Erfa.PruductionManagement.Api"
-RUN dotnet build "Erfa.PruductionManagement.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/Erfa.ProductionManagement.Api"
+RUN dotnet build "Erfa.ProductionManagement.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Erfa.PruductionManagement.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Erfa.ProductionManagement.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Erfa.PruductionManagement.Api.dll"]
+ENTRYPOINT ["dotnet", "Erfa.ProductionManagement.Api.dll"]

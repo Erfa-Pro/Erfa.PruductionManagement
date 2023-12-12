@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Erfa.PruductionManagement.Application\Erfa.PruductionManagement.Application.csproj" />
+    <ProjectReference Include="..\Erfa.ProductionManagement.Application\Erfa.ProductionManagement.Application.csproj" />
   </ItemGroup>
 
 </Project>

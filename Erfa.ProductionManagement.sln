@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5A7B585E-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E2B29F36-4A2B-4510-95D8-0225D1F784C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.PruductionManagement.Domain", "Erfa.PruductionManagement.Domain\Erfa.PruductionManagement.Domain.csproj", "{18867808-7FD2-4805-8830-B9FD30971C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Domain", "Erfa.ProductionManagement.Domain\Erfa.ProductionManagement.Domain.csproj", "{18867808-7FD2-4805-8830-B9FD30971C6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.PruductionManagement.Application", "Erfa.PruductionManagement.Application\Erfa.PruductionManagement.Application.csproj", "{25C2A30F-2A08-4FFC-8A46-3D167871ABBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Application", "Erfa.ProductionManagement.Application\Erfa.ProductionManagement.Application.csproj", "{25C2A30F-2A08-4FFC-8A46-3D167871ABBB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Persistance", "Erfa.ProductionManagement.Persistance\Erfa.ProductionManagement.Persistance.csproj", "{43D9803E-2CC8-4159-B5AA-1DF0973221C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.PruductionManagement.Api", "Erfa.PruductionManagement.Api\Erfa.PruductionManagement.Api.csproj", "{8970AE80-306B-4E0D-8BAA-860F565D888D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Api", "Erfa.ProductionManagement.Api\Erfa.ProductionManagement.Api.csproj", "{8970AE80-306B-4E0D-8BAA-860F565D888D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Application.Test.Unit", "Erfa.ProductionManagement.Application.Test.Unit\Erfa.ProductionManagement.Application.Test.Unit.csproj", "{8DF80279-35FD-467A-BD79-F0B65698F7CF}"
 EndProject
@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Api.Test.Integration", "Erfa.ProductionManagement.Api.Test.Integration\Erfa.ProductionManagement.Api.Test.Integration.csproj", "{5D01896A-89F4-466E-94A8-9AA46F150AA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erfa.ProductionManagement.Test.Acceptance", "Erfa.ProductionManagement.Test.Acceptance\Erfa.ProductionManagement.Test.Acceptance.csproj", "{C87E7CD9-CCE1-470A-B852-6384B3618D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Erfa.ProductionManagement.Test.Acceptance", "Erfa.ProductionManagement.Test.Acceptance\Erfa.ProductionManagement.Test.Acceptance.csproj", "{C87E7CD9-CCE1-470A-B852-6384B3618D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
