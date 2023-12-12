@@ -1,7 +1,7 @@
-﻿using Erfa.PruductionManagement.Application.Contracts.Persistance;
+﻿using Erfa.ProductionManagement.Application.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Erfa.ProductionManagement.Persistance.Repositories
+namespace Erfa.ProductionManagement.Persistence.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {

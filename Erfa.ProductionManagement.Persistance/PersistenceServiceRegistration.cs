@@ -1,10 +1,10 @@
-﻿using Erfa.ProductionManagement.Persistance.Repositories;
-using Erfa.PruductionManagement.Application.Contracts.Persistance;
+﻿using Erfa.ProductionManagement.Persistence.Repositories;
+using Erfa.ProductionManagement.Application.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Erfa.ProductionManagement.Persistance
+namespace Erfa.ProductionManagement.Persistence
 {
     public static class PersistenceServiceRegistration
     {

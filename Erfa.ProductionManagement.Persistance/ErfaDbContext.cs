@@ -1,8 +1,8 @@
-﻿using Erfa.PruductionManagement.Domain.Common;
-using Erfa.PruductionManagement.Domain.Entities;
+﻿using Erfa.ProductionManagement.Domain.Common;
+using Erfa.ProductionManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Erfa.ProductionManagement.Persistance
+namespace Erfa.ProductionManagement.Persistence
 {
     public class ErfaDbContext : DbContext
     {
@@ -22,15 +22,17 @@ namespace Erfa.ProductionManagement.Persistance
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
+            var date = DateTime.UtcNow;
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
+
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedDate = DateTime.UtcNow;
+                        entry.Entity.CreatedDate = date;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
+                        entry.Entity.LastModifiedDate = date;
                         break;
                 }
             }

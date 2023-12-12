@@ -29,18 +29,24 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
             _compositeService = new Builder()
                 .UseContainer()
                 .UseCompose()
+                .RemoveAllImages()
                 .FromFile(dockerComposePath)
+                .ServiceName($"accept-test-{Guid.NewGuid()}")
                 .RemoveOrphans()
-                .WaitForHttp("webapi", $"{confirmationUrl}/v1/Catalog",
+                .WaitForHttp("webapi", $"{confirmationUrl}/",
                     continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
-                .Build().Start();
+                .Build()
+                .Start();
         }
 
         [AfterTestRun]
         public static void DockerComposeDown()
         {
+
             _compositeService.Stop();
+            _compositeService.Remove(true);
             _compositeService.Dispose();
+
         }
 
         [BeforeScenario]
@@ -50,12 +56,11 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
             var httpClient = new HttpClient()
             {
                 BaseAddress = new Uri(config["ProductionManagement.Api:BaseAddress"])
+
             };
-            var y = _objectContainer;
-            _objectContainer.RegisterInstanceAs<HttpClient>(new HttpClient()
-            {
-                BaseAddress = new Uri(config["ProductionManagement.Api:BaseAddress"])
-            });
+
+            httpClient.DefaultRequestHeaders.Add("UserName", "TesUser");
+            _objectContainer.RegisterInstanceAs<HttpClient>(httpClient);
         }
 
         private static IConfiguration LoadConfiguration()

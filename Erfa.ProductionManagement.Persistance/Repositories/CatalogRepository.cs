@@ -1,8 +1,8 @@
-﻿using Erfa.PruductionManagement.Application.Contracts.Persistance;
-using Erfa.PruductionManagement.Domain.Entities;
+﻿using Erfa.ProductionManagement.Application.Contracts.Persistence;
+using Erfa.ProductionManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Erfa.ProductionManagement.Persistance.Repositories
+namespace Erfa.ProductionManagement.Persistence.Repositories
 {
 
     public class CatalogRepository : BaseRepository<Product>, ICatalogRepository

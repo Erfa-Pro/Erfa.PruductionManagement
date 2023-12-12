@@ -1,5 +1,5 @@
-version: '3.9'
-name: erfa-productionmanagement
+version: '3.7'
+name: erfa_production_management
 
 services:
 

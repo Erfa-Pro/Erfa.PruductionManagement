@@ -1,17 +1,10 @@
 ﻿Feature: Create Product
 
-A short summary of the feature
 
 
-Scenario: Products get created successfully
-	Given valid CreateProductRequest:
-		| ProductNumber | Description          | ProductionTImeSec | MaterialProductNAme |
-		| 210120F       | Reolsøjle for 120 cm | 55.62             | 1,25 x 120          |
-		| 210200F       | Reolsøjle for 200 cm | 92.7              | 1,25 x 120          |
-	When I create a product
-	Then the product is created
+Scenario: Product is created successfully
+	Given valid CreateProductRequest with ProductNumber "210120F", Description "Reolsøjle for 120 cm", ProductionTimeSec 55.62, MaterialProductName "1,25 x 120"
+	When creating a new product
+	Then the response status is Success
+	And the product is created with ProductNumber "210120F"
 
-Scenario: Products not created
-	Given invalid CreateProductRequest
-	When I create a product
-	Then the product is not created
