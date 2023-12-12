@@ -1,5 +1,6 @@
-﻿version: '3.9'
+﻿version: '3.7'
 
+name: erfaat
 services:
 
   erfa_data_prod:
@@ -20,7 +21,7 @@ services:
           retries: 5
           start_period: 80s
     networks:
-      - erfa
+      - erfaat
 
   prod_service:
     depends_on:
@@ -40,10 +41,10 @@ services:
       - Cors__AllowedOrigins__0__=https://dosmarter.tech
       - Cors__AllowedOrigins__1__=https://127.0.0.1:3000
     networks:
-      - erfa
+      - erfaat
 
 networks:
-  erfa:
-    name: erfa
+  erfaat:
+    name: erfaat
 
    

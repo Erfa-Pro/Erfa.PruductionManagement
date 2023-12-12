@@ -1,4 +1,6 @@
-﻿version: '3.9'
+﻿version: '3.7'
+
+name: erfaapiproduction
 
 services:
 
@@ -20,7 +22,7 @@ services:
           retries: 5
           start_period: 80s
     networks:
-      - erfa
+      - erfaapiproduction
 
   prod_service:
     depends_on:
@@ -40,10 +42,10 @@ services:
       - Cors__AllowedOrigins__0__=https://dosmarter.tech
       - Cors__AllowedOrigins__1__=https://127.0.0.1:3000
     networks:
-      - erfa
+      - erfaapiproduction
 
 networks:
-  erfa:
-    name: erfa
+  erfaapiproduction:
+    name: erfaapiproduction
 
    

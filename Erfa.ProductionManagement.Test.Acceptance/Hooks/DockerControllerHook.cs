@@ -32,7 +32,6 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
                 .RemoveAllImages()
                 .FromFile(dockerComposePath)
                 .RemoveOrphans()
-                .ForceRecreate()
                 .WaitForHttp("webapi", $"{confirmationUrl}/",
                     continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
                 .Build()
