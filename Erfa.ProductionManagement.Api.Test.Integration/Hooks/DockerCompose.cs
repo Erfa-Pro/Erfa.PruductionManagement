@@ -3,29 +3,27 @@ using Ductus.FluentDocker.Builders;
 using Ductus.FluentDocker.Services;
 using Microsoft.Extensions.Configuration;
 using System.Net;
-using TechTalk.SpecFlow;
 
-namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
+
+namespace Erfa.ProductionManagement.Api.Test.Integration.Base
 {
-    [Binding]
-    public class DockerControllerHook
+    public class DockerCompose
     {
-        public static ICompositeService _compositeService;
-        private IObjectContainer _objectContainer;
-        public DockerControllerHook(IObjectContainer objectContainer)
-        {
-            _objectContainer = objectContainer;
-        }
+        public ICompositeService _compositeService;
+        //private IObjectContainer _objectContainer;
+        //public DockerCompose(IObjectContainer objectContainer)
+        //{
+        //    _objectContainer = objectContainer;
+        //}
 
-        [BeforeTestRun]
-        public void DockerComposeUp()
+        public void DockerComposeUp(string controllerName)
         {
             var config = LoadConfiguration();
 
-            var dockerComposeFileName = config["DockerComposeFile"];
+            var dockerComposeFileName = config[$"{controllerName}:DockerComposeFile"];
             var dockerComposePath = GetDockerComposeLocation(dockerComposeFileName);
 
-            var confirmationUrl = config["ProductionManagement.Api:BaseAddress"];
+            var confirmationUrl = config[$"{controllerName}:ProductionManagement.Api:BaseAddress"];
             _compositeService = new Builder()
                 .UseContainer()
                 .UseCompose()
@@ -39,29 +37,28 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
                 .Start();
         }
 
-        [AfterTestRun]
         public void DockerComposeDown()
         {
 
             _compositeService.Stop();
+
             _compositeService.Remove(true);
             _compositeService.Dispose();
 
         }
 
-        [BeforeScenario]
-        public void AddHttpClient()
-        {
-            var config = LoadConfiguration();
-            var httpClient = new HttpClient()
-            {
-                BaseAddress = new Uri(config["ProductionManagement.Api:BaseAddress"])
+        //public void AddHttpClient(string controllerName)
+        //{
+        //    var config = LoadConfiguration();
+        //    var httpClient = new HttpClient()
+        //    {
+        //        BaseAddress = new Uri(config[$"{controllerName}:ProductionManagement.Api:BaseAddress"])
 
-            };
+        //    };
 
-            httpClient.DefaultRequestHeaders.Add("UserName", "TesUser");
-            _objectContainer.RegisterInstanceAs<HttpClient>(httpClient);
-        }
+        //    httpClient.DefaultRequestHeaders.Add("UserName", "TesUser");
+        //    _objectContainer.RegisterInstanceAs<HttpClient>(httpClient);
+        //}
 
         private IConfiguration LoadConfiguration()
         {

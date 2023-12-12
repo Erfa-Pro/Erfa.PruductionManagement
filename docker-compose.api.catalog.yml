@@ -6,9 +6,9 @@ services:
     image: postgres:14.1-alpine
     restart: always
     hostname: postgres
-    container_name: erfa_test_production_data
+    container_name: erfa_test_production_data_api_catalog
     ports:
-      - 5432:5432
+      - 5490:5432
     environment:
       POSTGRES_USER: sa
       POSTGRES_PASSWORD: Qwer!234
@@ -31,9 +31,9 @@ services:
     restart: on-failure
     build:
       context: .
-    container_name: erfa_test_production
+    container_name: erfa_test_production_api_catalog
     ports:
-      - 4060:80
+      - 4090:80
     environment:
       - ConnectionStrings__PostgreSQLConnString=Host=erfa_data_prod;Port=5432;Database=ProductionManagement;UserName=sa;Password=Qwer!234
       - Cors__PolicyName=test_policy
