@@ -24,6 +24,7 @@ namespace Erfa.ProductionManagement.Api.Test.Integration.Base
                 .UseCompose()
                 .RemoveAllImages()
                 .FromFile(dockerComposePath)
+                .ServiceName($"itg-test-{controllerName.ToLower()}-{Guid.NewGuid()}")
                 .RemoveOrphans()
                 .WaitForHttp("webapi", $"{confirmationUrl}/",
                     continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
@@ -55,5 +56,7 @@ namespace Erfa.ProductionManagement.Api.Test.Integration.Base
             }
             return Path.Combine(directory, dockerComposeFileName);
         }
+
+
     }
 }

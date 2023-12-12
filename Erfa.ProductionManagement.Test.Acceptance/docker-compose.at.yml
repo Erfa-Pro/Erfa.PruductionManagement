@@ -1,6 +1,5 @@
 ﻿version: '3.7'
 
-name: erfaat
 services:
 
   erfa_data_prod:
@@ -31,7 +30,7 @@ services:
       - erfa_data_prod
     restart: on-failure
     build:
-      context: .
+      context: ..
     container_name: erfa_test_production
     ports:
       - 4060:80

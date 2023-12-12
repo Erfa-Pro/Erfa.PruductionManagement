@@ -31,6 +31,7 @@ namespace Erfa.ProductionManagement.Test.Acceptance.Hooks
                 .UseCompose()
                 .RemoveAllImages()
                 .FromFile(dockerComposePath)
+                .ServiceName($"accept-test-{Guid.NewGuid()}")
                 .RemoveOrphans()
                 .WaitForHttp("webapi", $"{confirmationUrl}/",
                     continuation: (response, _) => response.Code != HttpStatusCode.OK ? 2000 : 0)
